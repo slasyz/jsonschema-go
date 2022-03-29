@@ -709,6 +709,10 @@ func (r *Reflector) walkProperties(v reflect.Value, parent *Schema, rc *ReflectC
 			continue
 		}
 
+		if !field.IsExported() {
+			continue
+		}
+
 		propName := strings.Split(tag, ",")[0]
 		omitEmpty := strings.Contains(tag, ",omitempty")
 		required := false
